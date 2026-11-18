@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BANK STUDY | Learn • Practice • Succeed</title>
+<style>
+:root{--navy:#0b1735;--blue:#155eef;--blue2:#0b48c5;--gold:#ffcc4d;--ink:#17233d;--muted:#64748b;--bg:#f4f7fc;--line:#e4eaf3;--green:#12805c}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--navy);color:white;padding:16px max(20px,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.brand{font-size:23px;font-weight:900;letter-spacing:.7px}.brand span{color:var(--gold)}nav{display:flex;gap:8px;flex-wrap:wrap}nav button{border:0;background:transparent;color:#dce6ff;padding:10px 13px;border-radius:9px;cursor:pointer;font-weight:650}nav button.active,nav button:hover{background:#20345f;color:white}
+main{max-width:1120px;margin:auto;padding:28px 20px 60px}.hero{background:linear-gradient(120deg,#0b1735,#1746a2);border-radius:22px;padding:42px;color:white;display:grid;grid-template-columns:1.5fr 1fr;gap:25px;align-items:center;overflow:hidden}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:1.6px}.hero h1{font-size:clamp(32px,5vw,50px);line-height:1.08;margin:12px 0}.hero p{color:#d9e4ff;line-height:1.7;max-width:590px}.hero-art{border:1px solid #ffffff35;background:#ffffff12;border-radius:18px;padding:24px;text-align:center}.hero-art .big{font-size:68px}.hero-art strong{display:block;font-size:18px;margin-top:8px}.hero-art small{color:#dce6ff}
+.btn{border:0;border-radius:10px;padding:12px 17px;background:var(--blue);color:white;font-weight:750;cursor:pointer}.btn:hover{background:var(--blue2)}.btn.gold{background:var(--gold);color:#15213b}.btn.light{background:#eaf0ff;color:#1746a2}.btn.outline{background:white;color:var(--blue);border:1px solid #cbd8f2}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 30px}.stat,.card,.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:19px}.stat b{font-size:25px;display:block;color:var(--navy)}.stat span{font-size:13px;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:30px 0 14px}.section-head h2{margin:0;font-size:23px}.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card h3{margin:9px 0 7px}.card p{color:var(--muted);font-size:14px;line-height:1.55}.tag{display:inline-block;padding:5px 9px;border-radius:20px;background:#edf3ff;color:#1746a2;font-size:11px;font-weight:800}.card .btn{margin-top:8px}
+.hidden{display:none!important}.muted{color:var(--muted)}.page-title{margin:4px 0 6px;font-size:29px}.sub{color:var(--muted);margin:0 0 22px}
+.test-top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;background:white;border:1px solid var(--line);padding:15px 18px;border-radius:14px;margin-bottom:16px}.timer{font-size:20px;font-weight:850;color:#b42318;font-variant-numeric:tabular-nums}.test-layout{display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:16px}.question-box{background:white;border:1px solid var(--line);border-radius:16px;padding:23px}.q-meta{color:var(--muted);font-size:13px;display:flex;justify-content:space-between}.question{font-size:19px;line-height:1.55;font-weight:700;margin:22px 0}.option{display:flex;gap:11px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:11px;margin:9px 0;cursor:pointer}.option:hover{border-color:#8eafff;background:#f8faff}.option input{margin-top:4px;accent-color:var(--blue)}.test-actions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:20px}.palette{background:white;border:1px solid var(--line);border-radius:16px;padding:17px}.palette h3{margin:0 0 12px}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.num{border:1px solid var(--line);background:white;border-radius:8px;padding:9px 0;cursor:pointer;font-weight:700}.num.current{outline:2px solid var(--blue);color:var(--blue)}.num.answered{background:#e1f5ec;border-color:#a5dfc5;color:#08734d}.legend{font-size:12px;color:var(--muted);line-height:1.8;margin-top:15px}
+.result{background:white;border:1px solid var(--line);border-radius:18px;padding:28px;text-align:center}.score{font-size:52px;font-weight:900;color:var(--blue)}.review{padding:15px 0;border-top:1px solid var(--line);text-align:left}.correct{color:var(--green);font-weight:750}.wrong{color:#b42318;font-weight:750}
+input[type=text],textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit}textarea{min-height:160px}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+footer{background:var(--navy);color:#dce6ff;padding:25px 20px;text-align:center;font-size:13px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:28px}.hero-art{display:none}.cards{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.test-layout{grid-template-columns:1fr}.admin-grid{grid-template-columns:1fr}.test-top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">BANK <span>STUDY</span></div>
+  <nav>
+    <button class="active" data-page="home">Home</button>
+    <button data-page="tests">Mock Tests</button>
+    <button data-page="practice">Practice</button>
+    <button data-page="youtube">YouTube</button>
+    <button data-page="admin">Question Admin</button>
+  </nav>
+</header>
+<main>
+<section id="home" class="page">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">YOUR BANK EXAM PREPARATION PARTNER</div>
+      <h1>Learn. Practice.<br><span style="color:var(--gold)">Succeed.</span></h1>
+      <p>Build speed, accuracy and confidence for Bank PO, Clerk, SBI, IBPS and RRB examinations with topic-wise reasoning practice and mock tests.</p>
+      <div class="actions"><button class="btn gold" onclick="showPage('tests')">Attempt a Mock Test</button><button class="btn" onclick="showPage('practice')">Explore Practice</button></div>
+    </div>
+    <div class="hero-art"><div class="big">🎯</div><strong>Think Faster. Score Higher.</strong><small>Reasoning • Practice • Performance</small></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>Bank Exams</b><span>SBI • IBPS • RRB</span></div>
+    <div class="stat"><b>Topic-wise</b><span>Focused reasoning practice</span></div>
+    <div class="stat"><b>Hindi + English</b><span>Explanations can be added</span></div>
+  </div>
+  <div class="section-head"><div><h2>Start your preparation</h2><p>Choose a learning mode and begin.</p></div></div>
+  <div class="cards">
+    <div class="card"><span class="tag">MOCK TEST</span><h3>Reasoning Mini Mock</h3><p>Attempt a timed sample test, navigate questions and see your score with explanations.</p><button class="btn" onclick="startTest()">Start Test</button></div>
+    <div class="card"><span class="tag">PRACTICE</span><h3>Daily Reasoning Practice</h3><p>Build your fundamentals with short topic-wise quizzes.</p><button class="btn light" onclick="showPage('practice')">Practice Now</button></div>
+    <div class="card"><span class="tag">VIDEO CLASSES</span><h3>Learn on YouTube</h3><p>Connect your Bank Study channel and guide students from video lessons to practice.</p><button class="btn light" onclick="showPage('youtube')">Add Channel Link</button></div>
+  </div>
+</section>
+
+<section id="tests" class="page hidden">
+  <h1 class="page-title">Mock Test Series</h1><p class="sub">Start with this sample test. Later, add full SBI/IBPS/RRB-style tests here.</p>
+  <div class="cards">
+    <div class="card"><span class="tag">FREE DEMO</span><h3>Reasoning Ability – Mini Mock 01</h3><p>5 questions • 5 minutes • +1 for correct answer • −0.25 for incorrect answer.</p><p><b>Topics:</b> Direction, ranking, syllogism and seating basics.</p><button class="btn" onclick="startTest()">Attempt Test</button></div>
+    <div class="card"><span class="tag">COMING NEXT</span><h3>Puzzle Practice Test</h3><p>Box, floor, month-date, designation and seating arrangement questions.</p><button class="btn outline" onclick="alert('This test will be added in the next content update.')">Coming Soon</button></div>
+    <div class="card"><span class="tag">COMING NEXT</span><h3>Bank Prelims Reasoning</h3><p>35-question exam-style practice with a full test timer.</p><button class="btn outline" onclick="alert('This test will be added in the next content update.')">Coming Soon</button></div>
+  </div>
+</section>
+
+<section id="practice" class="page hidden">
+  <h1 class="page-title">Topic-wise Practice</h1><p class="sub">Short quizzes to strengthen reasoning fundamentals.</p>
+  <div class="cards">
+    <div class="card"><span class="tag">BASICS</span><h3>Direction Sense</h3><p>Understand directions, turns and final position.</p><button class="btn" onclick="startTest(0)">Practice Questions</button></div>
+    <div class="card"><span class="tag">BASICS</span><h3>Ranking & Order</h3><p>Practice position from left, right, top and bottom.</p><button class="btn" onclick="startTest(1)">Practice Questions</button></div>
+    <div class="card"><span class="tag">BASICS</span><h3>Syllogism</h3><p>Test conclusions using logical statements.</p><button class="btn" onclick="startTest(2)">Practice Questions</button></div>
+  </div>
+</section>
+
+<section id="youtube" class="page hidden">
+  <h1 class="page-title">Learn with BANK STUDY</h1><p class="sub">Connect your YouTube channel so students can move from lessons to tests.</p>
+  <div class="panel">
+    <h3>Your YouTube channel link</h3>
+    <p class="muted">Paste your BANK STUDY channel URL below. It will be saved in this browser on this device.</p>
+    <input id="yturl" type="text" placeholder="https://www.youtube.com/@yourchannel">
+    <div class="actions"><button class="btn" onclick="saveYoutube()">Save Channel Link</button><button class="btn light" onclick="openYoutube()">Open Channel</button></div>
+    <p id="ytstatus" class="muted"></p>
+  </div>
+</section>
+
+<section id="admin" class="page hidden">
+  <h1 class="page-title">Question Admin – Starter</h1><p class="sub">Add questions by pasting a JSON question set. This demo saves questions only in this browser.</p>
+  <div class="admin-grid">
+    <div class="panel"><h3>Question set format</h3><p class="muted">Use this structure. Correct answer is the option index: 0, 1, 2 or 3.</p>
+<pre style="white-space:pre-wrap;background:#f4f7fc;padding:12px;border-radius:9px;font-size:12px">[
+ {"q":"Your question?","options":["A","B","C","D"],"answer":0,"explanation":"Explain why A is correct."}
+]</pre>
+      <button class="btn light" onclick="copyTemplate()">Copy Template</button>
+    </div>
+    <div class="panel"><h3>Import your questions</h3><textarea id="jsonInput" placeholder='Paste your JSON question set here...'></textarea><div class="actions"><button class="btn" onclick="importQuestions()">Import Questions</button><button class="btn outline" onclick="downloadQuestions()">Download Current Set</button></div><p id="adminstatus" class="muted"></p></div>
+  </div>
+  <div class="panel" style="margin-top:16px"><h3>Important for this first version</h3><p class="muted">This is a front-end prototype. Imported questions and channel settings stay in the current browser only. There is no student account, shared database, online leaderboard or secure admin login yet. Do not upload private student information.</p></div>
+</section>
+
+<section id="exam" class="page hidden">
+  <div class="test-top"><div><b>Reasoning Ability – Mini Mock 01</b><div class="muted" style="font-size:12px">+1 correct • −0.25 incorrect • 0 unattempted</div></div><div><div class="muted" style="font-size:11px">TIME LEFT</div><div class="timer" id="timer">05:00</div></div></div>
+  <div class="test-layout">
+    <div class="question-box"><div class="q-meta"><span id="qcount">Question 1 of 5</span><span id="qtopic">Direction Sense</span></div><div class="question" id="questionText"></div><div id="options"></div><div class="test-actions"><button class="btn outline" onclick="clearAnswer()">Clear Response</button><div style="display:flex;gap:8px"><button class="btn light" onclick="moveQuestion(-1)">Previous</button><button class="btn" onclick="moveQuestion(1)">Save & Next</button></div></div></div>
+    <aside class="palette"><h3>Question Palette</h3><div class="numbers" id="palette"></div><div class="legend">🟩 Answered<br>⬜ Not answered<br>🔵 Current question</div><button class="btn" style="width:100%;margin-top:18px" onclick="confirmSubmit()">Submit Test</button></aside>
+  </div>
+</section>
+
+<section id="results" class="page hidden">
+  <div class="result"><div class="eyebrow" style="color:var(--blue)">TEST COMPLETED</div><h1>Your Performance</h1><div class="score" id="score">0/5</div><p id="scoreline" class="muted"></p><div class="stats" id="resultStats"></div><button class="btn" onclick="startTest()">Reattempt Test</button> <button class="btn light" onclick="showPage('home')">Back to Home</button></div>
+  <div class="panel" style="margin-top:18px"><h2>Answer Review</h2><div id="review"></div></div>
+</section>
+</main>
+<footer>© <span id="year"></span> BANK STUDY • Learn. Practice. Succeed.<br>Independent educational initiative for Bank examination preparation.</footer>
+<script>
+const starterQuestions=[
+{topic:"Direction Sense",q:"A person walks 5 km north, turns right and walks 3 km. In which direction is the person from the starting point?",options:["North-East","South-East","North-West","South-West"],answer:0,explanation:"The person is 5 km north and 3 km east of the starting point, so the direction is North-East."},
+{topic:"Ranking & Order",q:"Ravi is 12th from the left and 18th from the right in a row. How many people are there in the row?",options:["28","29","30","31"],answer:1,explanation:"Total = left position + right position − 1 = 12 + 18 − 1 = 29."},
+{topic:"Syllogism",q:"Statements: All pens are books. All books are bags. Which conclusion definitely follows?",options:["All bags are pens","All pens are bags","Some bags are not books","No pen is a bag"],answer:1,explanation:"Since all pens are books and all books are bags, all pens must be bags."},
+{topic:"Alphabet",q:"If BANK is coded as C B O L (each letter shifted one step forward), how is LOAN coded?",options:["MPBO","KNZM","MPCB","MQBO"],answer:0,explanation:"Move each letter one step forward: L→M, O→P, A→B, N→O. The code is MPBO."},
+{topic:"Seating Basics",q:"Five people sit in a row. A is to the immediate left of B. Which pair must be adjacent?",options:["A and B","A and C","B and C","Cannot be determined"],answer:0,explanation:"The statement directly says A is immediately to the left of B, so they must be adjacent."}
+];
+let questions=JSON.parse(localStorage.getItem("bankStudyQuestions")||"null")||starterQuestions;
+let answers=[],current=0,timeLeft=300,timerHandle=null,activeQuestions=[];
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo(0,0)}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function startTest(index=null){activeQuestions=index===null?questions:questions.filter((q,i)=>i===index);if(!activeQuestions.length)activeQuestions=questions;answers=Array(activeQuestions.length).fill(null);current=0;timeLeft=300;showPage('exam');renderQuestion();clearInterval(timerHandle);updateTimer();timerHandle=setInterval(()=>{timeLeft--;updateTimer();if(timeLeft<=0){clearInterval(timerHandle);finishTest()}},1000)}
+function updateTimer(){let m=Math.floor(timeLeft/60),s=timeLeft%60;document.getElementById('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+function renderQuestion(){let q=activeQuestions[current];document.getElementById('qcount').textContent=`Question ${current+1} of ${activeQuestions.length}`;document.getElementById('qtopic').textContent=q.topic||'Reasoning';document.getElementById('questionText').textContent=q.q;document.getElementById('options').innerHTML=q.options.map((o,i)=>`<label class="option"><input type="radio" name="answer" value="${i}" ${answers[current]===i?'checked':''} onchange="selectAnswer(${i})"><span><b>${String.fromCharCode(65+i)}.</b> ${escapeHtml(o)}</span></label>`).join('');document.getElementById('palette').innerHTML=activeQuestions.map((q,i)=>`<button class="num ${i===current?'current':''} ${answers[i]!==null?'answered':''}" onclick="jumpQuestion(${i})">${i+1}</button>`).join('')}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function selectAnswer(i){answers[current]=i;renderQuestion()}
+function clearAnswer(){answers[current]=null;renderQuestion()}
+function jumpQuestion(i){current=i;renderQuestion()}
+function moveQuestion(d){current=Math.max(0,Math.min(activeQuestions.length-1,current+d));renderQuestion()}
+function confirmSubmit(){let done=answers.filter(a=>a!==null).length;if(confirm(`You have attempted ${done} of ${activeQuestions.length} questions. Submit test?`))finishTest()}
+function finishTest(){clearInterval(timerHandle);let correct=0,wrong=0;activeQuestions.forEach((q,i)=>{if(answers[i]===q.answer)correct++;else if(answers[i]!==null)wrong++});let score=correct-wrong*.25;showPage('results');document.getElementById('score').textContent=score.toFixed(2)+' / '+activeQuestions.length;document.getElementById('scoreline').textContent=`You attempted ${correct+wrong} of ${activeQuestions.length} questions.`;document.getElementById('resultStats').innerHTML=`<div class="stat"><b>${correct}</b><span>Correct</span></div><div class="stat"><b>${wrong}</b><span>Incorrect</span></div><div class="stat"><b>${activeQuestions.length-correct-wrong}</b><span>Unattempted</span></div>`;document.getElementById('review').innerHTML=activeQuestions.map((q,i)=>`<div class="review"><b>Q${i+1}. ${escapeHtml(q.q)}</b><p class="${answers[i]===q.answer?'correct':'wrong'}">${answers[i]===q.answer?'Correct':answers[i]===null?'Not attempted':'Incorrect'} • Correct answer: ${String.fromCharCode(65+q.answer)}. ${escapeHtml(q.options[q.answer])}</p><p class="muted">${escapeHtml(q.explanation||'Explanation will be added.')}</p></div>`).join('')}
+function saveYoutube(){let u=document.getElementById('yturl').value.trim();if(!/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(u)){document.getElementById('ytstatus').textContent='Please enter a valid YouTube URL beginning with https://';return}localStorage.setItem('bankStudyYoutube',u);document.getElementById('ytstatus').textContent='Channel link saved in this browser.'}
+function openYoutube(){let u=localStorage.getItem('bankStudyYoutube');if(u)window.open(u,'_blank');else document.getElementById('ytstatus').textContent='Save your channel link first.'}
+function importQuestions(){try{let data=JSON.parse(document.getElementById('jsonInput').value);if(!Array.isArray(data)||!data.length)throw Error('Paste a non-empty JSON array.');data.forEach((q,i)=>{if(typeof q.q!=='string'||!Array.isArray(q.options)||q.options.length<2||!Number.isInteger(q.answer)||q.answer<0||q.answer>=q.options.length)throw Error('Check question '+(i+1)+': q, options and answer are required.')});questions=data;localStorage.setItem('bankStudyQuestions',JSON.stringify(questions));document.getElementById('adminstatus').textContent=`Successfully imported ${questions.length} questions in this browser.`}catch(e){document.getElementById('adminstatus').textContent='Import error: '+e.message}}
+function downloadQuestions(){let blob=new Blob([JSON.stringify(questions,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bank-study-questions.json';a.click();URL.revokeObjectURL(a.href)}
+function copyTemplate(){let t='[\\n  {"topic":"Puzzle","q":"Your question?","options":["Option A","Option B","Option C","Option D"],"answer":0,"explanation":"Your explanation."}\\n]';navigator.clipboard?.writeText(t).then(()=>alert('Template copied.')).catch(()=>alert(t))}
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('yturl').value=localStorage.getItem('bankStudyYoutube')||'';
+</script>
+</body></html>
